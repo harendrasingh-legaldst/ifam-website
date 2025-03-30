@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - IFAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo-yellow.png" alt="IFAM Logo" class="header-logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </header>
+
+    <section class="page-hero events-hero hidden-section">
+        <div class="hero-content">
+            <h1 class="reveal-text">IFAM Events</h1>
+            <p class="reveal-text">Engage. Compete. Excel.</p>
+        </div>
+    </section>
+
+    <section class="events-intro hidden-section">
+        <div class="container">
+            <p class="events-intro-text reveal-text">
+                Dive into a calendar of events designed to elevate your legal prowess. From immersive workshops and coaching sessions to our much-anticipated in-house moot court competition, every event is an opportunity to learn, network, and shine.
+            </p>
+        </div>
+    </section>
+
+    <section class="featured-events hidden-section">
+        <div class="container">
+            <h2 class="section-title reveal-text">Featured Events</h2>
+            
+            <div class="event-card reveal-card">
+                <div class="event-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Moot Court Competition">
+                </div>
+                <div class="event-details">
+                    <h3>IFAM In-House Moot Court Competition</h3>
+                    <p class="event-description">
+                        Step into the arena! Our flagship moot court competition challenges you to present compelling arguments, hone your advocacy skills, and compete against the best. It's more than a competition – it's a proving ground for tomorrow's legal stars.
+                    </p>
+                    <div class="event-meta">
+                        <p><i class="far fa-calendar-alt"></i> <span class="date">October 15-17, 2023</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span class="location">Virtual Event</span></p>
+                    </div>
+                    <button class="event-cta">Register Now</button>
+                </div>
+            </div>
+            
+            <div class="event-card reveal-card">
+                <div class="event-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Legal Mastery Workshops">
+                </div>
+                <div class="event-details">
+                    <h3>Legal Mastery Workshops</h3>
+                    <p class="event-description">
+                        Join our interactive workshops led by legal experts. Learn cutting-edge techniques in legal writing, argumentation, and negotiation – all designed to make you a formidable advocate.
+                    </p>
+                    <div class="event-meta">
+                        <p><i class="far fa-calendar-alt"></i> <span class="date">September 5, 2023</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span class="location">Online Platform</span></p>
+                    </div>
+                    <button class="event-cta">Reserve Your Spot</button>
+                </div>
+            </div>
+            
+            <div class="event-card reveal-card">
+                <div class="event-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Sponsorship & Mentorship Meet-Up">
+                </div>
+                <div class="event-details">
+                    <h3>Sponsorship & Mentorship Meet-Up</h3>
+                    <p class="event-description">
+                        Connect with top-tier sponsors and experienced coaches in our exclusive networking event. Discover mentorship opportunities, get career advice, and build lasting professional relationships.
+                    </p>
+                    <div class="event-meta">
+                        <p><i class="far fa-calendar-alt"></i> <span class="date">November 10, 2023</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span class="location">Hybrid Event</span></p>
+                    </div>
+                    <button class="event-cta">Join the Meet-Up</button>
+                </div>
+            </div>
+            
+            <div class="event-card reveal-card">
+                <div class="event-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Advocacy Innovation Summit">
+                </div>
+                <div class="event-details">
+                    <h3>Advocacy Innovation Summit</h3>
+                    <p class="event-description">
+                        An annual gathering of thought leaders, innovators, and legal professionals discussing the future of legal advocacy. Gain insights, participate in panel discussions, and be part of shaping the next chapter in legal education.
+                    </p>
+                    <div class="event-meta">
+                        <p><i class="far fa-calendar-alt"></i> <span class="date">December 8-9, 2023</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span class="location">New Delhi</span></p>
+                    </div>
+                    <button class="event-cta">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="past-events hidden-section">
+        <div class="container">
+            <h2 class="section-title reveal-text">Past Event Highlights</h2>
+            <div class="event-gallery">
+                <div class="gallery-item reveal-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Past Event 1">
+                </div>
+                <div class="gallery-item reveal-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Past Event 2">
+                </div>
+                <div class="gallery-item reveal-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Past Event 3">
+                </div>
+                <div class="gallery-item reveal-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Past Event 4">
+                </div>
+                <div class="gallery-item reveal-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Past Event 5">
+                </div>
+                <div class="gallery-item reveal-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Past Event 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events-cta hidden-section">
+        <div class="container">
+            <h2 class="reveal-text">Ready to elevate your legal journey?</h2>
+            <p class="reveal-text">Browse our events, register for upcoming sessions, and join a community where advocacy meets excellence.</p>
+            <button class="cta-button">Explore All Events</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">IFAM</div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest events and insights.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 International Forum for Advocacy and Mooting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
