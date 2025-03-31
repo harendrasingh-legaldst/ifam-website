@@ -162,8 +162,8 @@ header.scrolled {
 }
 
 .header-logo {
-    max-width: 120px;
-    max-height: 50px;
+    max-width: 150px;
+    max-height: 65px;
     height: auto;
     display: block;
     object-fit: contain;
