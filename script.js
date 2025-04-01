@@ -882,3 +882,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Donation page custom amount functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const customRadio = document.getElementById('amount-custom');
+    const customAmountField = document.querySelector('.custom-amount');
+    
+    if (customRadio && customAmountField) {
+        // Initially hide custom amount field
+        customAmountField.style.display = 'none';
+        
+        // Show/hide custom amount field based on radio selection
+        document.querySelectorAll('input[name="donationAmount"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.id === 'amount-custom') {
+                    customAmountField.style.display = 'block';
+                } else {
+                    customAmountField.style.display = 'none';
+                }
+            });
+        });
+        
+        // Donation form submission animation
+        const donateBtn = document.querySelector('.donate-btn');
+        if (donateBtn) {
+            donateBtn.addEventListener('click', function(e) {
+                // This is for demo - in a real implementation, you'd handle actual payment processing
+                e.preventDefault();
+                
+                // Add loading state
+                this.classList.add('loading');
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                    this.classList.add('success');
+                    
+                    // Reset after success
+                    setTimeout(() => {
+                        this.classList.remove('success');
+                    }, 3000);
+                }, 2000);
+            });
+        }
+    }
+});

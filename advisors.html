@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board of Advisors - IFAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="advisors-page">
+    <!-- Version Control - change value to "v2" to show coming soon page -->
+    <input type="hidden" id="advisorVersion" value="v2">
+    
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo-yellow.png" alt="IFAM Logo" class="header-logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="advisors.html" class="active">Board of Advisors</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html">Donate</a></li>
+            </ul>
+        </nav>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </header>
+
+    <div class="animated-glow-container">
+        <div class="glow-element"></div>
+        <div class="glow-element"></div>
+        <div class="glow-element"></div>
+    </div>
+
+    <!-- VERSION 1: Detailed Advisors Page -->
+    <section class="advisors-hero version-detailed">
+        <div class="container">
+            <div class="advisors-header">
+                <h1>Our <span class="accent-text">Board of Advisors</span></h1>
+                <p class="advisors-intro">Meet the distinguished legal experts who guide our mission and help shape the future of legal advocacy in India.</p>
+            </div>
+            
+            <!-- Adding floating background icons similar to coming soon version -->
+            <div class="floating-icons-container detailed-bg">
+                <div class="floating-icon icon-1"><i class="fas fa-gavel"></i></div>
+                <div class="floating-icon icon-2"><i class="fas fa-balance-scale"></i></div>
+                <div class="floating-icon icon-3"><i class="fas fa-book-open"></i></div>
+                <div class="floating-icon icon-4"><i class="fas fa-landmark"></i></div>
+            </div>
+            
+            <div class="advisors-carousel-container">
+                <div class="advisors-carousel">
+                    <div class="advisor-card" data-advisor="1">
+                        <div class="advisor-image">
+                            <img src="images/advisors/advisor1.jpg" alt="Justice Rajiv Sharma">
+                        </div>
+                        <div class="advisor-info">
+                            <h3>Justice Rajiv Sharma</h3>
+                            <p class="advisor-title">Former High Court Judge</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advisor-card" data-advisor="2">
+                        <div class="advisor-image">
+                            <img src="images/advisors/advisor2.jpg" alt="Dr. Meenakshi Arora">
+                        </div>
+                        <div class="advisor-info">
+                            <h3>Dr. Meenakshi Arora</h3>
+                            <p class="advisor-title">Senior Advocate, Supreme Court</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advisor-card" data-advisor="3">
+                        <div class="advisor-image">
+                            <img src="images/advisors/advisor3.jpg" alt="Prof. Arjun Kapoor">
+                        </div>
+                        <div class="advisor-info">
+                            <h3>Prof. Arjun Kapoor</h3>
+                            <p class="advisor-title">International Law Expert</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advisor-card" data-advisor="4">
+                        <div class="advisor-image">
+                            <img src="images/advisors/advisor4.jpg" alt="Adv. Priya Malhotra">
+                        </div>
+                        <div class="advisor-info">
+                            <h3>Adv. Priya Malhotra</h3>
+                            <p class="advisor-title">Constitutional Law Specialist</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advisor-card" data-advisor="5">
+                        <div class="advisor-image">
+                            <img src="images/advisors/advisor5.jpg" alt="Dr. Vikram Singh">
+                        </div>
+                        <div class="advisor-info">
+                            <h3>Dr. Vikram Singh</h3>
+                            <p class="advisor-title">Dean, National Law University</p>
+                        </div>
+                    </div>
+                    
+                    <div class="advisor-card" data-advisor="6">
+                        <div class="advisor-image">
+                            <img src="images/advisors/advisor6.jpg" alt="Justice Leela Krishnan">
+                        </div>
+                        <div class="advisor-info">
+                            <h3>Justice Leela Krishnan</h3>
+                            <p class="advisor-title">Retired Supreme Court Justice</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-navigation">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="advisor-details-container">
+                <div class="advisor-detail default-message">
+                    <h3>Meet Our Advisors</h3>
+                    <p>Please click on any advisor above to read their detailed profile.</p>
+                </div>
+                
+                <div class="advisor-detail" data-advisor="1">
+                    <h3>Justice Rajiv Sharma</h3>
+                    <p>Justice Rajiv Sharma brings over 30 years of judicial expertise to our board. As a former High Court Judge known for his landmark environmental judgments, he has pioneered legal reforms across multiple states. His expertise in constitutional law and human rights has shaped national policy. Justice Sharma leads our Ethics Committee and provides strategic guidance on our moot court competitions. His connections with judicial academies across India help our students access premier training opportunities. Justice Sharma is particularly passionate about mentoring first-generation lawyers and creating pathways for underprivileged students to excel in international advocacy competitions.</p>
+                </div>
+                
+                <div class="advisor-detail" data-advisor="2">
+                    <h3>Dr. Meenakshi Arora</h3>
+                    <p>Dr. Meenakshi Arora is a distinguished Senior Advocate practicing at the Supreme Court of India with expertise in constitutional litigation and international arbitration. With numerous landmark cases to her credit, she brings invaluable practical insights to our coaching programs. Dr. Arora has represented India at the ICJ and serves on multiple international legal committees. She holds a doctorate in International Law from Oxford University and has authored three acclaimed books on cross-border litigation. Through her extensive network across Asia and Europe, she helps our students secure prestigious internships and competition opportunities. Dr. Arora leads our International Moot Court Training cell.</p>
+                </div>
+                
+                <div class="advisor-detail" data-advisor="3">
+                    <h3>Prof. Arjun Kapoor</h3>
+                    <p>Prof. Arjun Kapoor is a globally recognized authority on international law and diplomatic negotiations. With previous experience at the United Nations and the ICJ, he brings unparalleled expertise in public international law moots. Prof. Kapoor has coached winning teams at Jessup, Vis, and FDI moot competitions for over fifteen years. His innovative teaching methodologies have transformed advocacy training across South Asia. He maintains close connections with leading international law firms and helps our students navigate complex global competitions. Prof. Kapoor's research on comparative advocacy techniques has been adopted by law schools worldwide. He currently spearheads our Global Advocacy Training Program.</p>
+                </div>
+                
+                <div class="advisor-detail" data-advisor="4">
+                    <h3>Adv. Priya Malhotra</h3>
+                    <p>Advocate Priya Malhotra specializes in constitutional litigation with particular focus on civil liberties and fundamental rights. A National Law School gold medalist, she represents marginalized communities in high-profile constitutional challenges. Adv. Malhotra was herself a distinguished mooter, having won the Best Speaker award at Jessup and Nelson Mandela competitions. Her practical approach to constitutional interpretation has influenced our training methodology for domestic moot competitions. She conducts specialized workshops on written advocacy and memorial preparation. Adv. Malhotra's network of constitutional lawyers provides our students with exceptional mentorship opportunities. She leads our Constitutional Law Research Division.</p>
+                </div>
+                
+                <div class="advisor-detail" data-advisor="5">
+                    <h3>Dr. Vikram Singh</h3>
+                    <p>Dr. Vikram Singh serves as the Dean of one of India's premier National Law Universities, bringing academic excellence and administrative experience to our board. His research on legal education reforms has influenced curriculum development across Indian law schools. Dr. Singh has pioneered specialized courses on advocacy, negotiation, and client counseling at the university level. He maintains strong connections with law schools across five continents, facilitating exchange programs for our students. Dr. Singh's background in both common law and civil law jurisdictions helps our teams adapt to varied competition formats. He oversees our Academic Standards Committee and scholarship programs.</p>
+                </div>
+                
+                <div class="advisor-detail" data-advisor="6">
+                    <h3>Justice Leela Krishnan</h3>
+                    <p>Justice Leela Krishnan's illustrious career spans four decades, culminating in her tenure as a Supreme Court Justice. Known for her progressive judgments in gender justice and commercial law, she brings judicial perspective to our advocacy training. Justice Krishnan has served on numerous international tribunals and arbitration panels. Her experience as a judicial evaluator in moot competitions for twenty years provides invaluable insights into effective advocacy techniques. Justice Krishnan mentors our women advocates through specialized programs and scholarships. She has authored definitive works on judicial interpretation that guide our memorial preparation strategy. Justice Krishnan leads our Judicial Engagement Initiative.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- VERSION 2: Coming Soon Page -->
+    <section class="advisors-hero version-coming-soon">
+        <div class="container">
+            <div class="coming-soon-content">
+                <h1>Board of <span class="accent-text">Advisors</span></h1>
+                <div class="coming-soon-message">
+                    <h2>Coming Soon</h2>
+                    <p>We're assembling a distinguished panel of legal luminaries who will guide our vision and mission. Stay tuned for announcements.</p>
+                </div>
+                
+                <div class="floating-icons-container">
+                    <div class="floating-icon icon-1"><i class="fas fa-gavel"></i></div>
+                    <div class="floating-icon icon-2"><i class="fas fa-balance-scale"></i></div>
+                    <div class="floating-icon icon-3"><i class="fas fa-book-open"></i></div>
+                    <div class="floating-icon icon-4"><i class="fas fa-university"></i></div>
+                    <div class="floating-icon icon-5"><i class="fas fa-landmark"></i></div>
+                    <div class="floating-icon icon-6"><i class="fas fa-scroll"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="org-name">International Forum For Advocacy and Mooting</h3>
+                    <p class="trust-registration"><i>(Trust registered under Indian Trusts Act 1882)</i></p>
+                    <div class="contact-details">
+                        <p class="address">711, 7th floor, skyline Plaza-3, Sushant Golf City, Ansal API, Lucknow Uttar Pradesh-226030</p>
+                        <p class="contact-item">Mobile: +91 9631959595</p>
+                        <p class="contact-item">Email: teamifam@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="quick-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="advisors.html">Board of Advisors</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="donate.html">Donate</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h4>Stay Updated</h4>
+                        <p>Subscribe to our newsletter for the latest events and insights.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 International Forum for Advocacy and Mooting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script src="advisors.js"></script>
+</body>
+</html> 

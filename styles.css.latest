@@ -3781,7 +3781,7 @@ footer::after {
 
 .amount-option label {
     display: block;
-    padding: 12px 10px;
+    padding: 12px 0;
     text-align: center;
     background-color: rgba(30, 30, 30, 0.6);
     border: 1px solid rgba(240, 212, 76, 0.2);
@@ -3789,8 +3789,6 @@ footer::after {
     color: var(--light-text);
     cursor: pointer;
     transition: var(--transition);
-    font-size: 1.1rem;
-    white-space: nowrap;
 }
 
 .amount-option input[type="radio"]:checked + label {
@@ -3816,10 +3814,6 @@ footer::after {
     border-radius: 8px;
     color: var(--light-text);
     font-size: 1rem;
-}
-
-.custom-amount input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
 }
 
 .donation-info {
@@ -4006,8 +4000,8 @@ footer::after {
 
 /* Light theme for the detailed version */
 .version-detailed {
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #0c0c0c;
+    color: var(--light-text);
     min-height: 100vh;
     padding: 120px 0 80px;
     position: relative;
@@ -4021,18 +4015,18 @@ footer::after {
 
 .version-detailed .advisors-header h1 {
     font-size: 3.5rem;
-    color: #333;
+    color: var(--light-text);
     margin-bottom: 20px;
     position: relative;
 }
 
 .version-detailed .accent-text {
-    color: #d4af37; /* Gold color for light theme */
+    color: var(--accent-color); /* Revert to original accent color */
 }
 
 .version-detailed .advisors-intro {
     font-size: 1.2rem;
-    color: #555;
+    color: var(--light-text);
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.8;
@@ -4047,78 +4041,100 @@ footer::after {
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(135deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%) 0 0,
-        linear-gradient(225deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%) 0 0,
-        linear-gradient(315deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%) 0 0,
-        linear-gradient(45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%) 0 0;
+        linear-gradient(135deg, rgba(240, 212, 76, 0.05) 25%, transparent 25%) 0 0,
+        linear-gradient(225deg, rgba(240, 212, 76, 0.05) 25%, transparent 25%) 0 0,
+        linear-gradient(315deg, rgba(240, 212, 76, 0.05) 25%, transparent 25%) 0 0,
+        linear-gradient(45deg, rgba(240, 212, 76, 0.05) 25%, transparent 25%) 0 0;
     background-size: 20px 20px;
-    background-color: #f5f5f5;
-    opacity: 0.6;
+    background-color: rgba(15, 15, 15, 0.9);
+    opacity: 0.8;
     z-index: -2;
 }
 
 /* Enhanced floating icons for detailed view */
 .floating-icons-container.detailed-bg {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
+    z-index: -1;
 }
 
 .floating-icons-container.detailed-bg .floating-icon {
     opacity: 0.15;
-    color: #d4af37; /* Gold color for light theme */
-    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 5px rgba(240, 212, 76, 0.5));
     transform-origin: center center;
     position: absolute;
 }
 
 .version-detailed .floating-icon i {
-    font-size: 2.8rem;
-    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+    font-size: 3.5rem;
 }
 
 .version-detailed .icon-1 {
     top: 15%;
     left: 10%;
-    animation: gentleFloat 15s infinite alternate ease-in-out;
+    animation: floatWithRotate 20s infinite alternate ease-in-out;
 }
 
 .version-detailed .icon-2 {
-    top: 25%;
-    right: 15%;
-    animation: gentleFloat 18s infinite alternate-reverse ease-in-out;
+    top: 30%;
+    right: 20%;
+    animation: floatWithScale 25s infinite alternate-reverse ease-in-out;
 }
 
 .version-detailed .icon-3 {
-    bottom: 20%;
-    left: 20%;
-    animation: gentleFloat 20s infinite alternate ease-in-out;
+    bottom: 15%;
+    left: 25%;
+    animation: floatWithPath 30s infinite linear;
 }
 
 .version-detailed .icon-4 {
+    bottom: 40%;
+    right: 10%;
+    animation: floatWithRotate 22s infinite alternate-reverse ease-in-out;
+}
+
+.version-detailed .icon-5 {
+    top: 60%;
+    left: 50%;
+    animation: floatWithScale 28s infinite alternate ease-in-out;
+}
+
+.version-detailed .icon-6 {
+    top: 20%;
+    left: 40%;
+    animation: floatWithPath 32s infinite linear;
+}
+
+/* Additional floating icons */
+.version-detailed .icon-7 {
+    top: 70%;
+    right: 30%;
+    animation: floatWithRotate 26s infinite alternate ease-in-out;
+}
+
+.version-detailed .icon-8 {
+    top: 25%;
+    left: 70%;
+    animation: floatWithScale 23s infinite alternate-reverse ease-in-out;
+}
+
+.version-detailed .icon-9 {
     bottom: 30%;
-    right: 25%;
-    animation: gentleFloat 17s infinite alternate-reverse ease-in-out;
+    left: 5%;
+    animation: floatWithPath 29s infinite linear;
 }
 
-@keyframes gentleFloat {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(15px, -15px) rotate(5deg);
-    }
-    100% {
-        transform: translate(-15px, 15px) rotate(-5deg);
-    }
+.version-detailed .icon-10 {
+    top: 45%;
+    right: 45%;
+    animation: floatWithRotate 24s infinite alternate-reverse ease-in-out;
 }
 
-/* Remove old animations */
 @keyframes floatWithRotate {
     0% { transform: translate(0, 0) rotate(0deg); }
     25% { transform: translate(100px, 50px) rotate(90deg); }
@@ -4143,12 +4159,12 @@ footer::after {
     100% { transform: translate(0, 0) rotate(360deg); }
 }
 
-/* Advisor Carousel Styles - Light Theme */
+/* Advisor Carousel Styles - Dark Theme */
 .version-detailed .advisors-carousel-container {
     position: relative;
     margin: 40px 0;
     padding: 20px 0;
-    background: linear-gradient(to right, #f5f5f5, rgba(212, 175, 55, 0.1), #f5f5f5);
+    background: linear-gradient(to right, rgba(12, 12, 12, 0.7), rgba(240, 212, 76, 0.1), rgba(12, 12, 12, 0.7));
     border-radius: 10px;
 }
 
@@ -4168,12 +4184,12 @@ footer::after {
 
 .version-detailed .advisor-card {
     flex: 0 0 280px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
     transition: var(--transition);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(240, 212, 76, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
@@ -4195,15 +4211,15 @@ footer::after {
 
 .version-detailed .advisor-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
-    border-color: #d4af37;
+    box-shadow: 0 15px 30px rgba(240, 212, 76, 0.2);
+    border-color: var(--accent-color);
 }
 
 .version-detailed .advisor-card.active {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
-    border-color: #d4af37;
-    background-color: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 15px 30px rgba(240, 212, 76, 0.3);
+    border-color: var(--accent-color);
+    background-color: rgba(240, 212, 76, 0.1);
 }
 
 .version-detailed .advisor-info {
@@ -4213,13 +4229,13 @@ footer::after {
 
 .version-detailed .advisor-info h3 {
     font-size: 1.4rem;
-    color: #333;
+    color: var(--light-text);
     margin-bottom: 5px;
 }
 
 .version-detailed .advisor-title {
     font-size: 0.9rem;
-    color: #d4af37;
+    color: var(--accent-color);
     font-style: italic;
 }
 
@@ -4235,34 +4251,34 @@ footer::after {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: white;
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    color: #d4af37;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(240, 212, 76, 0.3);
+    color: var(--accent-color);
     font-size: 1.2rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .version-detailed .carousel-prev:hover, 
 .version-detailed .carousel-next:hover {
-    background-color: rgba(212, 175, 55, 0.1);
+    background-color: rgba(240, 212, 76, 0.1);
     transform: scale(1.1);
 }
 
-/* Advisor Details Styles - Light Theme */
+/* Advisor Details Styles - Dark Theme */
 .version-detailed .advisor-details-container {
     margin-top: 60px;
     padding: 40px 30px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(240, 212, 76, 0.1);
     position: relative;
     min-height: 200px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .version-detailed .advisor-details-container::before {
@@ -4272,7 +4288,7 @@ footer::after {
     left: 10%;
     right: 10%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
 .version-detailed .advisor-detail {
@@ -4286,7 +4302,7 @@ footer::after {
 
 .version-detailed .advisor-detail h3 {
     font-size: 2rem;
-    color: #d4af37;
+    color: var(--accent-color);
     margin-bottom: 20px;
     text-align: center;
     position: relative;
@@ -4300,12 +4316,12 @@ footer::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(240, 212, 76, 0.5), transparent);
 }
 
 .version-detailed .advisor-detail p {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--light-text);
     line-height: 1.8;
     text-align: justify;
 }
@@ -4323,163 +4339,32 @@ footer::after {
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto;
-    color: #777;
+    color: #b1b1b1;
     text-align: center;
 }
 
-/* Coming Soon Version Styles */
-.version-coming-soon {
-    min-height: 100vh;
-    background-color: var(--background-color);
-    display: none;
-    padding: 120px 0 80px;
-    position: relative;
-    overflow: hidden;
-}
-
-.coming-soon-content {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    padding: 4rem 2rem;
-}
-
-.version-coming-soon h1 {
-    font-size: 4rem;
-    color: var(--light-text);
-    margin-bottom: 2rem;
-}
-
-.version-coming-soon .accent-text {
-    color: var(--accent-color);
-}
-
-.coming-soon-message {
-    margin-bottom: 3rem;
-}
-
-.coming-soon-message h2 {
-    font-size: 3rem;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-}
-
-.coming-soon-message p {
-    font-size: 1.2rem;
-    color: var(--light-text);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* Coming Soon Floating Icons */
-.version-coming-soon .floating-icons-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.version-coming-soon .floating-icon {
-    position: absolute;
-    color: var(--accent-color);
-    opacity: 0.2;
-    filter: drop-shadow(0 0 10px rgba(240, 212, 76, 0.3));
-}
-
-.version-coming-soon .floating-icon i {
-    font-size: 3rem;
-}
-
-.version-coming-soon .icon-1 {
-    top: 20%;
-    left: 10%;
-    animation: floatComingSoon 20s infinite linear;
-}
-
-.version-coming-soon .icon-2 {
-    top: 40%;
-    right: 15%;
-    animation: floatComingSoon 25s infinite linear reverse;
-}
-
-.version-coming-soon .icon-3 {
-    bottom: 30%;
-    left: 20%;
-    animation: floatComingSoon 22s infinite linear;
-}
-
-.version-coming-soon .icon-4 {
-    top: 60%;
-    right: 25%;
-    animation: floatComingSoon 28s infinite linear reverse;
-}
-
-.version-coming-soon .icon-5 {
-    bottom: 20%;
-    right: 10%;
-    animation: floatComingSoon 24s infinite linear;
-}
-
-.version-coming-soon .icon-6 {
-    top: 30%;
-    left: 30%;
-    animation: floatComingSoon 26s infinite linear reverse;
-}
-
-@keyframes floatComingSoon {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(30px, 30px) rotate(180deg);
-    }
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-/* Responsive styles for coming soon version */
-@media (max-width: 768px) {
-    .version-coming-soon h1 {
-        font-size: 3rem;
-    }
-    
-    .coming-soon-message h2 {
-        font-size: 2.2rem;
-        letter-spacing: 6px;
-    }
-    
-    .coming-soon-message p {
-        font-size: 1.1rem;
-    }
-    
-    .version-coming-soon .floating-icon i {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .version-coming-soon h1 {
-        font-size: 2.5rem;
-    }
-    
-    .coming-soon-message h2 {
-        font-size: 1.8rem;
-        letter-spacing: 4px;
-    }
-    
-    .coming-soon-message p {
-        font-size: 1rem;
-    }
-    
-    .version-coming-soon .floating-icon i {
-        font-size: 2rem;
-    }
+/* Remove all light theme header & footer styles */
+body.light-theme header,
+body.light-theme .nav-links li a,
+body.light-theme .nav-links li a::after,
+body.light-theme .nav-links li a.active,
+body.light-theme footer,
+body.light-theme .footer-info .org-name,
+body.light-theme .footer-info .trust-registration,
+body.light-theme .contact-details .address,
+body.light-theme .contact-details .contact-item,
+body.light-theme .quick-links h4, 
+body.light-theme .newsletter h4,
+body.light-theme .quick-links ul li a,
+body.light-theme .newsletter p,
+body.light-theme .newsletter-form input,
+body.light-theme .newsletter-form button,
+body.light-theme .copyright,
+body.light-theme .copyright p,
+body.light-theme .cursor,
+body.light-theme .cursor-follower,
+body.light-theme .animated-glow-container .glow-element,
+body.light-theme .burger div {
+    /* Reset all light theme styles to use default styling */
+    all: revert;
 }

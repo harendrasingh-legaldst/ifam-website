@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - IFAM</title>
+    <title>Donate - IFAM</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="contact-page">
+<body class="donate-page">
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
@@ -25,8 +25,8 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="advisors.html">Board of Advisors</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html" class="active">Donate</a></li>
             </ul>
         </nav>
         <div class="burger">
@@ -42,45 +42,26 @@
         <div class="glow-element"></div>
     </div>
 
-    <section class="contact-hero">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h1>Need help?</h1>
-                <h2>Get in touch</h2>
+    <section class="donate-hero">
+        <div class="donate-container">
+            <div class="donate-info">
+                <h1>Support Our Mission</h1>
+                <h2>Make a Difference</h2>
                 
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>IFAM Headquarters</p>
-                            <p>711, 7th floor, skyline Plaza-3</p>
-                            <p>Sushant Golf City, Ansal API</p>
-                            <p>Lucknow, Uttar Pradesh-226030</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+91 9631959595</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>teamifam@gmail.com</p>
-                    </div>
+                <div class="rupee-icon">
+                    <img src="images/rupee.png" alt="Rupee Symbol" class="rupee-image">
                 </div>
                 
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="donate-text">
+                    <p>Your contribution helps us empower future legal champions by providing resources, coaching, and sponsorships to deserving law students across India.</p>
+                    <p>Every donation makes a significant impact in nurturing legal talent and creating opportunities for excellence in advocacy and mooting.</p>
                 </div>
             </div>
             
-            <div class="contact-form-container">
-                <h2>We're waiting to hear from you.</h2>
+            <div class="donate-form-container">
+                <h2>Complete Your Donation</h2>
                 
-                <form class="contact-form" action="https://formspree.io/f/mjkyepwz" method="POST">
+                <form class="donate-form" action="#" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <input type="text" name="firstName" placeholder="First Name" required>
@@ -95,34 +76,87 @@
                     </div>
                     
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Phone Number">
+                        <input type="tel" name="phone" placeholder="Phone Number" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="institution" placeholder="Name of Institution" required>
+                        <input type="text" name="institution" placeholder="Institution (if applicable)">
                     </div>
-
-                    <div class="form-group">
-                        <input type="text" name="competition" placeholder="Name of Moot Court Competition Participating in">
+                    
+                    <div class="form-group donation-amount">
+                        <h3>Select Amount</h3>
+                        <div class="amount-options">
+                            <div class="amount-option">
+                                <input type="radio" id="amount1" name="amount" value="1000">
+                                <label for="amount1">Rs. 1,000</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount2" name="amount" value="5000">
+                                <label for="amount2">Rs. 5,000</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount3" name="amount" value="10000">
+                                <label for="amount3">Rs. 10,000</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount4" name="amount" value="custom">
+                                <label for="amount4">Custom</label>
+                            </div>
+                        </div>
+                        <div class="custom-amount">
+                            <input type="number" placeholder="Enter amount (Rs.)" min="1">
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <select name="assistance" id="assistance-input" required>
-                            <option value="" disabled selected>Assistance Needed In</option>
-                            <option value="coach">Finding Coach</option>
-                            <option value="national">Sponsorship for National Travel</option>
-                            <option value="international">Sponsorship for International Travel</option>
-                            <option value="research">Guidance on Research and Memo Drafting</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <textarea name="message" placeholder="Leave a message (optional)" rows="3"></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Type your message here..." rows="5" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="donate-btn">
+                        <span class="btn-text">Pay Now</span>
+                        <span class="loading-spinner"></span>
+                        <span class="success-icon"><i class="fas fa-check"></i></span>
+                    </button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="donation-info">
+        <div class="container">
+            <h2 class="section-title">How Your Donation Helps</h2>
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Student Scholarships</h3>
+                    <p>Provide financial support to talented law students for participating in national and international mooting competitions.</p>
+                </div>
+                
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Coaching</h3>
+                    <p>Fund professional coaching programs led by experienced advocates to help students develop their mooting skills.</p>
+                </div>
+                
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>International Exposure</h3>
+                    <p>Support students representing India at prestigious international mooting competitions around the world.</p>
+                </div>
+                
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Resource Development</h3>
+                    <p>Help create comprehensive research materials and advocacy resources for law students across India.</p>
+                </div>
             </div>
         </div>
     </section>
