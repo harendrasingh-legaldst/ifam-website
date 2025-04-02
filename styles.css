@@ -167,6 +167,7 @@ header.scrolled {
     height: auto;
     display: block;
     object-fit: contain;
+    padding: 5px 10px;
 }
 
 .header-logo img {
@@ -226,6 +227,24 @@ header.scrolled {
     width: 100%;
 }
 
+/* Add menu animation keyframes and body styles */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Update burger styles */
 .burger {
     display: none;
     cursor: pointer;
@@ -233,10 +252,10 @@ header.scrolled {
 
 .burger div {
     width: 25px;
-    height: 2px;
-    background-color: var(--light-text);
+    height: 3px;
+    background-color: var(--accent-color);
     margin: 5px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 /* Modern hero section styling with glass effect */
@@ -280,41 +299,66 @@ header.scrolled {
 }
 
 .hero-headline {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero-headline .org-name {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 1rem;
+    animation: fadeInDown 1s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-headline .org-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+}
+
+.hero-headline .slogan-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
 }
 
 .hero-headline h2 {
-    font-size: 4.5rem;
+    font-size: 2.8rem;
     font-weight: 400;
     line-height: 1.1;
     color: var(--light-text);
     opacity: 0.9;
     font-style: italic;
     font-family: 'Playfair Display', serif;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin: 0;
 }
 
 .hero-headline h3 {
-    font-size: 5rem;
+    font-size: 3.2rem;
     font-weight: 700;
     line-height: 1.1;
     color: var(--accent-color);
-    margin-top: 0;
+    margin: 0;
     font-style: normal;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.hero-headline h1 {
-    font-size: 6rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--light-text);
-    letter-spacing: -1px;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 0.5rem;
 }
 
 /* Add varying font styles */
@@ -322,18 +366,88 @@ header.scrolled {
     font-weight: 700;
     letter-spacing: 1px;
     font-style: normal;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.hero-headline .emphasis::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.hero-headline .emphasis:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .hero-headline .bold-text {
     font-weight: 800;
     letter-spacing: 0.5px;
     color: var(--accent-color);
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
 .hero-headline .italic-text {
     font-style: italic;
     font-family: 'Playfair Display', serif;
     font-weight: 600;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .hero-headline .org-name {
+        font-size: 2.8rem;
+    }
+    
+    .hero-headline h2 {
+        font-size: 2.4rem;
+    }
+    
+    .hero-headline h3 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-headline .org-name {
+        font-size: 2.2rem;
+    }
+    
+    .hero-headline h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-headline h3 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-headline .org-name {
+        font-size: 1.8rem;
+    }
+    
+    .hero-headline h2 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-headline h3 {
+        font-size: 2rem;
+    }
 }
 
 .tagline {
@@ -355,6 +469,8 @@ header.scrolled {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     width: fit-content;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: smoothFadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.7s forwards;
 }
 
 .glass-card:hover {
@@ -525,6 +641,8 @@ header.scrolled {
     line-height: 1.8;
     color: #333;
     margin-bottom: 3rem;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .intro-features {
@@ -1997,7 +2115,7 @@ footer::after {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFD700' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0d44c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
@@ -2961,6 +3079,8 @@ footer::after {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
     line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* Beliefs Section Styles */
@@ -4481,5 +4601,1015 @@ footer::after {
     
     .version-coming-soon .floating-icon i {
         font-size: 2rem;
+    }
+}
+
+/* Scroll Guide */
+.scroll-guide {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text);
+    z-index: 5; /* Lower z-index to prevent overlap */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: pointer;
+    pointer-events: none; /* Prevent interaction with elements behind */
+}
+
+@media (max-width: 992px) {
+    .scroll-guide {
+        bottom: 20px;
+        display: none; /* Hide on mobile devices */
+    }
+}
+
+/* Update hero section for better responsive layout */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 3rem; /* Add padding to prevent overlap */
+    }
+
+    .hero-graphic {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 3rem; /* Add margin to prevent overlap */
+    }
+}
+
+/* Remove custom cursor on mobile devices */
+@media (max-width: 768px) {
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    a, button {
+        cursor: pointer !important;
+    }
+}
+
+/* Fix animation stuttering */
+.hero-headline .reveal-text {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    animation: smoothFadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes smoothFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* Adjust animation delays for smoother sequence */
+.hero-headline h1.reveal-text {
+    animation-delay: 0.1s;
+}
+
+.hero-headline h2.reveal-text {
+    animation-delay: 0.3s;
+}
+
+.hero-headline h3.reveal-text {
+    animation-delay: 0.5s;
+}
+
+.glass-card {
+    opacity: 0;
+    animation: smoothFadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.7s forwards;
+}
+
+/* Fix for organization name and responsive layout */
+@media (max-width: 768px) {
+    .hero-headline {
+        margin-top: 60px; /* Add space at top for the title */
+        padding-top: 25px;
+    }
+    
+    .hero-headline .org-name {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        display: block;
+        padding-top: 10px;
+    }
+    
+    /* Hide join the movement button on mobile */
+    .glass-card {
+        display: none;
+    }
+}
+
+
+/* Darker overlay when menu is open */
+body.menu-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 990;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Improve mobile menu visibility */
+@media (max-width: 992px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 4rem 0;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.4s ease;
+    }
+    
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links li:nth-child(4) { transition-delay: 0.4s; }
+    .nav-links li:nth-child(5) { transition-delay: 0.5s; }
+    
+    .burger {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+        position: fixed;
+        top: 25px;
+        left: 25px;
+        background: rgba(21, 21, 21, 0.7);
+        border-radius: 5px;
+        padding: 10px;
+    }
+    
+    .burger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .burger.active div:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .burger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    header {
+        justify-content: center;
+        padding: 15px 0;
+    }
+    
+    .logo {
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+    }
+    
+    .header-logo {
+        margin: 0 auto;
+        padding: 5px 10px; max-height: 55px;
+    }
+}
+
+/* Fix hero section title positioning in responsive */
+@media (max-width: 768px) {
+    .hero-headline {
+        margin-top: 60px;
+        padding-top: 30px;
+    }
+    
+    .hero-headline .org-name {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+        padding: 0 10px 15px;
+    }
+    
+    .hero {
+        padding-top: 60px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    /* Improve close button visibility */
+    .burger.active {
+        background: rgba(240, 212, 76, 0.1);
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-links {
+        background-color: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .nav-links li a {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 0.8rem 0;
+    }
+    
+    .nav-links li a:hover,
+    .nav-links li a.active {
+        text-shadow: 0 0 10px rgba(240, 212, 76, 0.5);
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: left;
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .hero-text-container {
+        width: 100%;
+        align-items: flex-start;
+    }
+    
+    .hero-headline {
+        align-items: flex-start;
+    }
+    
+    .hero-headline .org-name::after {
+        left: 0;
+        transform: none;
+    }
+    
+    .hero-graphic {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-headline {
+        margin-top: 40px;
+        padding-top: 25px;
+    }
+}
+
+/* Make vision and mission content justified */
+.vision-content p, 
+.mission-content p {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+/* Add responsive styles for Vision & Mission sections */
+@media (max-width: 992px) {
+    .vision-section, .mission-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .mission-title {
+        text-align: left;
+        order: -1;
+    }
+    
+    .mission-title::before {
+        left: -1rem;
+        right: auto;
+    }
+    
+    .vision-title h2, .mission-title h2 {
+        font-size: 2.8rem;
+    }
+    
+    .vision-title::before, .mission-title::before {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .vision-content, .mission-content {
+        padding: 1.5rem;
+    }
+    
+    .vision-content p, .mission-content p {
+        font-size: 1rem;
+    }
+    
+    .vision-title h2, .mission-title h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .vision-title::before, .mission-title::before {
+        font-size: 4.5rem;
+        top: -1.5rem;
+    }
+    
+    .vision-mission {
+        padding: 4rem 0;
+    }
+    
+    .vision-section, .mission-section {
+        margin-bottom: 4rem;
+    }
+    
+    .about-hero-title h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-hero-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vision-content, .mission-content {
+        padding: 1.2rem;
+    }
+    
+    .vision-title h2, .mission-title h2 {
+        font-size: 2rem;
+    }
+    
+    .vision-title::before, .mission-title::before {
+        font-size: 3.5rem;
+        top: -1rem;
+    }
+    
+    .vision-content p, .mission-content p {
+        margin-bottom: 1rem;
+    }
+    
+    .vision-section, .mission-section {
+        margin-bottom: 3rem;
+    }
+    
+    .about-hero-title h1 {
+        font-size: 2rem;
+    }
+    
+    .about-hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Add responsive styles for Beliefs section and floating icons */
+@media (max-width: 992px) {
+    .beliefs-container {
+        padding: 0 1.5rem;
+    }
+    
+    .floating-legal-icons {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .floating-icon {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .beliefs-title h2 {
+        font-size: 2.5rem;
+    }
+    
+    .belief-card {
+        padding: 1.5rem;
+    }
+    
+    .belief-icon {
+        height: 70px;
+        width: 70px;
+        line-height: 70px;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .belief-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .belief-card p {
+        font-size: 0.95rem;
+    }
+    
+    .floating-legal-icons {
+        opacity: 0.3;
+    }
+    
+    .floating-icon {
+        font-size: 1.5rem;
+    }
+    
+    .floating-icon:nth-child(n+5) {
+        display: none; /* Hide some icons on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .beliefs-title h2 {
+        font-size: 2rem;
+    }
+    
+    .belief-icon {
+        height: 60px;
+        width: 60px;
+        line-height: 60px;
+        font-size: 1.8rem;
+    }
+    
+    .beliefs-section {
+        padding: 3rem 0;
+    }
+    
+    .floating-icon {
+        font-size: 1.2rem;
+    }
+    
+    .floating-icon:nth-child(n+4) {
+        display: none; /* Hide more icons on very small screens */
+    }
+}
+
+/* Enhance responsive styles for objectives section */
+@media (max-width: 992px) {
+    .objectives-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+    
+    .objective-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .objective-card p {
+        font-size: 0.95rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+}
+
+@media (max-width: 768px) {
+    .objectives-section {
+        padding: 4rem 0;
+    }
+    
+    .objectives-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.2rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .objective-icon {
+        height: 60px;
+        width: 60px;
+        line-height: 60px;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .objective-card {
+        padding: 1.8rem;
+    }
+    
+    .about-page .objective-card p {
+        line-height: 1.6;
+    }
+}
+
+/* Improve general responsive text handling */
+@media (max-width: 768px) {
+    .about-page p {
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+    
+    .about-hero {
+        padding: 6rem 1.5rem 4rem;
+    }
+    
+    .about-hero-content {
+        text-align: center;
+        padding: 0 1rem;
+    }
+}
+
+/* Additional responsive styles for the member popup */
+@media (max-width: 992px) {
+    .popup-content {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+        padding: 1.8rem;
+    }
+    
+    .popup-header {
+        width: 40%;
+    }
+    
+    .popup-body {
+        width: 60%;
+        font-size: 1rem;
+    }
+    
+    .popup-header .header-text h3 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-content {
+        flex-direction: column;
+        height: auto;
+        max-height: 85vh;
+        padding: 1.5rem;
+        overflow-y: auto;
+    }
+    
+    .popup-header {
+        width: 100%;
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .popup-header .member-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 0;
+        margin-right: 1.5rem;
+    }
+    
+    .popup-header .header-text {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .popup-body {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 1.5rem;
+        max-height: none;
+        overflow: visible;
+    }
+    
+    .popup-body p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .popup-content {
+        padding: 1.2rem;
+        margin: 10px;
+        max-height: 80vh;
+    }
+    
+    .popup-header {
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1.2rem;
+    }
+    
+    .popup-header .member-image {
+        width: 110px;
+        height: 110px;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .popup-header .header-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .popup-header .header-text .designation {
+        font-size: 1rem;
+    }
+    
+    .close-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .popup-body p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Fix for floating icons in responsive view */
+@media (max-width: 768px) {
+    .floating-legal-icons {
+        opacity: 0.7; /* Increase opacity to make icons more visible */
+        display: block !important; /* Ensure icons are shown */
+        z-index: 0; /* Keep behind content */
+    }
+    
+    .floating-icon {
+        font-size: 1.8rem !important; /* Ensure consistent size */
+        display: block !important; /* Make sure icons aren't hidden */
+    }
+    
+    .floating-icon:nth-child(n+5) {
+        display: block !important; /* Show all icons */
+    }
+    
+    /* Fix for advisor page floating icons */
+    .floating-icons-container,
+    .floating-icons-container.detailed-bg {
+        display: block !important;
+        opacity: 0.7;
+    }
+    
+    .version-detailed .floating-icon i,
+    .version-coming-soon .floating-icon i {
+        font-size: 2.2rem;
+        display: block !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-icon {
+        font-size: 1.5rem !important;
+        display: block !important;
+    }
+    
+    .floating-icon:nth-child(n+4) {
+        display: block !important; /* Show all icons on small screens */
+    }
+    
+    /* Make icons visible but not overwhelming on small screens */
+    .version-detailed .floating-icon i,
+    .version-coming-soon .floating-icon i {
+        font-size: 1.8rem;
+    }
+}
+
+/* Fix for black shadow on right side in mobile view */
+@media (max-width: 992px) {
+    /* Ensure no shadow is visible when menu is closed */
+    .nav-links {
+        box-shadow: none !important;
+    }
+    
+    /* Only show shadow when menu is active */
+    .nav-links.active {
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7) !important;
+    }
+    
+    /* Remove any potential background overlay when menu is not open */
+    body:not(.menu-open)::after {
+        display: none !important;
+    }
+}
+
+.events-intro-text {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Improved responsive styles for contact page */
+@media screen and (max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        width: 95%;
+        max-width: 800px;
+    }
+    
+    .contact-form-container {
+        padding: 2rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    
+    .form-group {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-hero {
+        padding: 100px 0 40px;
+    }
+    
+    .contact-container {
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        width: 92%;
+    }
+    
+    .contact-info {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+    
+    .contact-form-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-form {
+        gap: 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .dropdown-selected {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .contact-item {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-details {
+        margin-top: 1.2rem;
+    }
+    
+    .social-icons {
+        margin-top: 1.5rem;
+    }
+    
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-hero {
+        padding: 90px 0 30px;
+    }
+    
+    .contact-container {
+        width: 95%;
+        border-radius: 12px;
+        margin: 0 auto;
+    }
+    
+    .contact-info {
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .contact-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-info h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-item i {
+        font-size: 1rem;
+        margin-right: 0.7rem;
+    }
+    
+    .contact-item p {
+        font-size: 0.9rem;
+    }
+    
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .contact-form-container {
+        padding: 1.2rem;
+    }
+    
+    .contact-form-container h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .dropdown-selected {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .submit-btn {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Responsive styles for page-hero section */
+@media screen and (max-width: 768px) {
+    .page-hero {
+        height: 50vh;
+        padding-top: 70px;
+    }
+    
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .page-hero h1::after {
+        width: 80px;
+        bottom: -8px;
+    }
+    
+    .page-hero p {
+        font-size: 1rem;
+    }
+    
+    .animated-glow-container {
+        opacity: 0.4;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-hero {
+        height: 40vh;
+        padding-top: 60px;
+    }
+    
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .page-hero h1::after {
+        width: 60px;
+        bottom: -6px;
+    }
+    
+    .animated-glow-container {
+        opacity: 0.3;
+    }
+}
+
+/* Additional responsive styles for contact form elements */
+@media screen and (max-width: 768px) {
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(240, 212, 76, 0.1);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+        background: var(--accent-color);
+        color: #000;
+        transform: translateY(-3px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-row {
+        gap: 0.8rem;
+    }
+    
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* Final responsive improvements for contact page */
+@media screen and (max-width: 768px) {
+    /* Improved form row styling */
+    .form-row {
+        width: 100%;
+    }
+    
+    /* Better textarea sizing for mobile */
+    .form-group textarea {
+        min-height: 100px;
+        max-height: 150px;
+    }
+    
+    /* Improve placeholder text contrast */
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        opacity: 0.7;
+    }
+    
+    /* Adjust glow elements for mobile */
+    .glow-element {
+        width: 50vw;
+        height: 50vw;
+        opacity: 0.4;
+    }
+    
+    /* Optimize dropdown on mobile */
+    .dropdown-selected {
+        font-size: 0.95rem;
+    }
+    
+    /* Fix submit button width */
+    .submit-btn {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Further optimize for very small screens */
+    .glow-element {
+        width: 70vw;
+        height: 70vw;
+        filter: blur(30px);
+        opacity: 0.3;
+    }
+    
+    /* Ensure form inputs are large enough to tap */
+    .form-group input,
+    .form-group textarea,
+    .dropdown-selected {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Improve contrast for placeholder text */
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        opacity: 0.6;
     }
 }

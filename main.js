@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize any UI elements not handled by script.js here
     
-    // Scroll indicator click - using native smooth scrolling
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
+    // Scroll guide click - using native smooth scrolling
+    const scrollGuide = document.querySelector('.scroll-guide');
+    if (scrollGuide) {
+        scrollGuide.addEventListener('click', () => {
             const introSection = document.querySelector('.intro');
             if (introSection) {
                 // Use the browser's native smooth scrolling

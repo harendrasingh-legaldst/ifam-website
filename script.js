@@ -166,6 +166,32 @@ function initSmoothScroll() {
     };
 }
 
+// Scroll Guide Visibility
+function handleScrollGuideVisibility() {
+    const scrollGuide = document.querySelector('.scroll-guide');
+    if (!scrollGuide) return;
+    
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        
+        // Start fading out after 100px of scroll
+        if (scrollPosition > 100) {
+            const opacity = Math.max(0, 1 - (scrollPosition - 100) / 300);
+            scrollGuide.style.opacity = opacity;
+            
+            // Hide completely when opacity is very low
+            if (opacity < 0.05) {
+                scrollGuide.style.visibility = 'hidden';
+            } else {
+                scrollGuide.style.visibility = 'visible';
+            }
+        } else {
+            scrollGuide.style.opacity = 1;
+            scrollGuide.style.visibility = 'visible';
+        }
+    });
+}
+
 // Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
     // Clean up any existing scroll event listeners
@@ -183,6 +209,9 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollTrigger();
     headerScrollEffect();
     initSmoothScroll();
+    
+    // Initialize scroll guide visibility
+    handleScrollGuideVisibility();
     
     // Other initialization can go here
     
@@ -229,6 +258,46 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Slow premium scroll initialized successfully");
     
     animateTimeline();
+
+    // Mobile menu functionality
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    if (burger) {
+        burger.addEventListener('click', function() {
+            // Toggle navigation
+            nav.classList.toggle('active');
+            burger.classList.toggle('active');
+            
+            // Toggle body scroll
+            document.body.classList.toggle('menu-open');
+            
+            // Animate links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+        });
+    }
+    
+    // Close menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                burger.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                
+                navLinks.forEach(link => {
+                    link.style.animation = '';
+                });
+            }
+        });
+    });
 });
 
 // Testimonial slider
